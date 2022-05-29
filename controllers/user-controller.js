@@ -73,7 +73,7 @@ const userController = {
         });        
     },
 
-    // deleteUserById
+    // deleteUserById DONE
     deleteUserById({ params }, res) {
         User.findOneAndDelete({ _id: params.id })
         .then(dbUserData => {
@@ -82,7 +82,7 @@ const userController = {
                 return;
             }
             
-            res.json(dbUserData);
+            res.json(`User deleted!`);
         })
         .catch(err => {
             console.log(err);
