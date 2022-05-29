@@ -27,11 +27,19 @@ const userSchema = new Schema(
                 ref: 'User'
             }
         ]
-    }
+    },
+    {
+        toJSON: {
+          virtuals: true,
+          getters: true
+        },
+        // prevents virtuals from creating duplicate of _id as `id`
+        id: false
+      }
 )
 
 // returns the number of friends
-userSchema.virtual('friendslist')
+userSchema.virtual('totalNumberOfFriends')
     .get(function() {return `${this.friends}`})
     .set(function(v) {
         const friendslist = v.length
