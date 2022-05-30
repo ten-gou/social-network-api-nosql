@@ -35,17 +35,18 @@ const thoughtController = {
         Thought.create(body)
         .then(dbThoughtData => {
             User.findOneAndUpdate(
-                { username: dbThoughtData.username },
+                { username: dbThoughtData.username},
                 { $push: { thoughts: dbThoughtData._id } },
                 { new: true, runValidators: true }
             )
-
-            res.json(dbThoughtData);
+            .then(dbThoughtData => {
+                res.json(dbThoughtData)
+            })
         })
         .catch(err => {
             console.log(err);
             res.status(400).json(err);
-        });
+        });        
     },
 
     // updateThoughtById DONE
