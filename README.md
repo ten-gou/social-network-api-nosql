@@ -26,7 +26,7 @@ Made by Libin Wang, this program is considered to be under Public Domain License
 A social network Api that allows for the creation of users and the ability to post their thoughts into a MongoDB database
 
 ### 1-1. Picture or Video Examples
-[A link to the tutorial video]()
+[A link to the tutorial video](https://drive.google.com/file/d/1E95sZC4EnxHyXS6WdciGkhPAmh2_xves/view?usp=sharing)
 
 ### 1-2. Known Bugs
 N/A
