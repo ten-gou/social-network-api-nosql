@@ -1,9 +1,9 @@
 const { param } = require('express/lib/request');
 const { regexpToText } = require('nodemon/lib/utils');
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
-    // getAllUsers MOSTLY DONE but Populate Path of Thoughts are incomplete
+    // getAllUsers DONE
     getAllUsers(req, res) {
         User.find({})
         .populate({
@@ -22,7 +22,7 @@ const userController = {
         });
     },
 
-    // getSingleUser MOSTLY DONE but Populate Paths are incomplete
+    // getSingleUser DONE
     getSingleUser({ params }, res) {
         User.findOne({ _id: params.id })
         .populate({
@@ -84,12 +84,13 @@ const userController = {
                 return;
             }
             
-            res.json(`User deleted!`);
+            Thought.deleteMany({ username: dbUserData.username })
+            .then(dbUserData => res.json(dbUserData))
         })
         .catch(err => {
             console.log(err);
             res.status(400).json(err);
-        });        
+        });      
     },
 
     // addFriendToList DONE
