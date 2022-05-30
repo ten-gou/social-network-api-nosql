@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-/*
+
 const reactionSchema = new Schema(
     {
         //custom id to make 
@@ -26,10 +26,10 @@ const reactionSchema = new Schema(
     {
         toJSON: {
           getters: true
-        }
+        },
+        id: false
     }
 );
-*/
 
 const thoughtSchema = new Schema(
     {
@@ -48,7 +48,7 @@ const thoughtSchema = new Schema(
             type: String,
             required: true
         },
-        // reactions: [reactionSchema]
+        reactions: [reactionSchema]
     },
     {
         toJSON: {
